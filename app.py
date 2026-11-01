@@ -4,7 +4,12 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-WINDOWS_API = "http://127.0.0.1:8000/network"
+import os
+
+WINDOWS_API = os.getenv(
+    "SIMULATOR_URL",
+    "http://127.0.0.1:8000/network"
+)
 
 # Server-side dashboard history. These survive browser refreshes while Flask
 # remains running, and are capped so the demo stays lightweight.
